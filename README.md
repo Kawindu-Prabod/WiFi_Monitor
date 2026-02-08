@@ -1,7 +1,7 @@
 # WiFi Monitor
 
 WiFi Monitor is a simple Android application that monitors your device's WiFi connectivity status and displays information about the current connection.
-This was mainly made because if WiFi suddenly disconnected while in full screen mode, it will not show as user have to pull down the notification centre to check it. So, this will inform the user via Toast message if WiFi is disconnected. This can help some user's ensure mobile data is not charged when WiFi is no longer available.
+This was mainly made because if WiFi suddenly disconnected while in full screen mode, it will not show as user have to pull down the notification centre to check it. So, this will inform the user via Toast message if WiFi is disconnected. This can help some users to ensure mobile data is not charged when WiFi is no longer available.
 
 ## Features
 
