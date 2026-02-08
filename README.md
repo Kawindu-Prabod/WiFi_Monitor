@@ -1,26 +1,41 @@
 # WiFi Monitor
 
-WiFi Monitor is a simple Android application that monitors your device's WiFi connectivity status and displays information about the current connection.
-This was mainly made because if WiFi suddenly disconnected while in full screen mode, it will not show as user have to pull down the notification centre to check it. So, this will inform the user via Toast message if WiFi is disconnected. This can help some users to ensure mobile data is not charged when WiFi is no longer available.
+WiFi Monitor is a real-time Android application designed to track and display WiFi connectivity status. It provides users with immediate feedback on their network connection, ensuring they are aware of state changes such as disconnections or network switches.
+
+This application is particularly useful for users who need to ensure they are connected to WiFi to avoid unwanted mobile data usage, especially when using full-screen apps where the status bar is hidden.
 
 ## Features
 
-- **Real-time WiFi Status:** See whether your device is connected to a WiFi network.
-- **Network SSID:** Displays the name of the connected WiFi network (SSID).
-- **Available Networks:** If not connected, it shows a list of the top 5 available WiFi networks with the strongest signal.
-- **Background Notifications:** Get notified with a Toast message when your WiFi connects or disconnects, even when the app is in the background.
-- **Permission Handling:** Gracefully requests necessary permissions to access WiFi and location data.
+- **Real-time Status Monitoring:** Instantly detects changes in WiFi connectivity (Connected, Disconnected, Enabled, Disabled).
+- **Network Information:** Displays the SSID of the currently connected WiFi network.
+- **Available Networks:** Scans and lists the top available WiFi networks sorted by signal strength when not connected.
+- **Background Alerts:** Uses a `BroadcastReceiver` to provide Toast messages for WiFi state changes even when the app is in the background.
+- **Theme Support:** Includes support for both Light and Dark modes with adaptive launcher icons.
+- **Splash Screen:** Integrated `androidx.core:core-splashscreen` for a smooth launch experience.
 
-## How to Build and Run
+## Technical Details
 
-1.  Clone the repository or import the project into Android Studio.
-2.  Build the project using Gradle.
-3.  Run the app on an Android device or emulator.
+The project is built using modern Android development practices:
+
+- **Language:** Kotlin
+- **Build System:** Gradle with Kotlin DSL (`build.gradle.kts`)
+- **UI:** Android Views (XML layouts) with Jetpack Compose dependencies included.
+- **Key Components:**
+    - **`MainActivity`**: Manages the main UI using `status_screen.xml`, handles runtime permissions, and initiates WiFi scans.
+    - **`WifiStateReceiver`**: A `BroadcastReceiver` that listens for connectivity and state changes to trigger notifications.
 
 ## Permissions
 
-The app requires the following permissions to function correctly:
+To function correctly, the app requires the following permissions defined in `AndroidManifest.xml`:
 
-- `ACCESS_NETWORK_STATE`: To check the network connectivity state.
-- `ACCESS_WIFI_STATE`: To access information about the WiFi connection.
-- `ACCESS_FINE_LOCATION`: To scan for available WiFi networks.
+- `android.permission.ACCESS_NETWORK_STATE`: To check if the device has an active network connection.
+- `android.permission.ACCESS_WIFI_STATE`: To read information about the current WiFi network (SSID, BSSID, etc.).
+- `android.permission.ACCESS_FINE_LOCATION`: Required on Android 8.1+ to access WiFi SSID and scan results.
+
+## Getting Started
+
+1.  **Clone the repository:** Import the project into Android Studio.
+2.  **Build:** Sync the project with Gradle files.
+3.  **Run:** Deploy the app to an Android device or emulator.
+
+*Note: Location services must be enabled on the device for WiFi scanning to work correctly on newer Android versions.*
